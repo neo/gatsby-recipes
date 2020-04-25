@@ -1,0 +1,78 @@
+# TypeScript, ESLint and SCSS
+
+---
+
+Pull base files
+
+<File path="package.json" content={`{ "private": true }`} />
+<File path=".gitignore" content="https://github.com/gatsbyjs/gatsby/raw/master/starters/hello-world/.gitignore" />
+<File path=".prettierignore" content="https://github.com/gatsbyjs/gatsby/raw/master/starters/hello-world/.prettierignore" />
+<File path="gatsby-config.js" content="https://github.com/gatsbyjs/gatsby/raw/master/starters/hello-world/gatsby-config.js" />
+<File path=".prettierrc" content="https://gist.githubusercontent.com/neo/af1ca7f9a225b86b46fb28a6d77900f3/raw/734edf34af0c4f44cd4355fe6c6c6eee828bb7b7/.prettierrc" />
+
+---
+
+Add npm scripts
+
+<NPMScript name="develop" command="GATSBY_HOT_LOADER=fast-refresh gatsby develop" />
+<NPMScript name="build" command="gatsby build" />
+<NPMScript name="serve" command="gatsby serve" />
+<NPMScript name="clean" command="gatsby clean" />
+<NPMScript name="start" command="npm run develop" />
+
+---
+
+Install minimum Gatsby, React and React DOM
+
+<NPMPackage name="gatsby" />
+<NPMPackage name="react" />
+<NPMPackage name="react-dom" />
+
+---
+
+Add TypeScript
+
+<NPMPackage name="typescript" />
+<NPMPackage name="gatsby-plugin-ts" />
+<GatsbyPlugin
+  name="gatsby-plugin-ts"
+  options={{
+    codegen: false,
+    forkTsCheckerPlugin: {
+      eslint: true
+    }
+  }}
+/>
+
+---
+
+Add ESLint
+
+<NPMPackage name="eslint" />
+<NPMPackage name="eslint-config-typescript-react-prettier" />
+<File path=".eslintrc" content={`{
+  "extends": ["typescript-react-prettier"]
+}
+`} />
+
+---
+
+Add SCSS
+
+<NPMPackage name="node-sass" />
+<NPMPackage name="gatsby-plugin-sass" />
+<GatsbyPlugin
+  name="gatsby-plugin-sass"
+  options={{
+    cssLoaderOptions: {
+      localIdentName: "[emoji]",
+    },
+  }}
+/>
+<File path="typings/scss-module.d.ts" content="https://gist.githubusercontent.com/neo/1f395d4bbbab7aa63e80a58c79499834/raw/90e6ae8d23f28fe0b80e94eb0ce27902a5d75d82/scss-module.d.ts" />
+
+---
+
+That's it! Remember to initialize your `tsconfig.json` file with:
+
+`npx tsc --init --noEmit --target esnext --jsx react`
